@@ -42,6 +42,6 @@ We will communicate primarily through Slack over the next few weeks, with check-
 <p>• Plot of high-risk areas</p>
 <p>• The results of our machine learning tests</p>
 
-Team: Alex Dallman, Jovan Humphrey, Nina Q
-Source: https://www.kaggle.com/datasets/rtatman/188-million-us-wildfires
+<p>Team: Alex Dallman, Jovan Humphrey, Nina Q</p>
+<p>Source: https://www.kaggle.com/datasets/rtatman/188-million-us-wildfires</p>
 
