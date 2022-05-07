@@ -1,4 +1,4 @@
-#Final Project - Segment 1#
+# Final Project - Segment 1 #
 
 ##<b>Oregon Fire Analysis and Prediction (1993-2017)</b>##
 
