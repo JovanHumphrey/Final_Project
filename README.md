@@ -40,7 +40,48 @@ After importing libraries and the SQLite file into Jupyter Notebook, and creatin
 
 ## Machine Learning
 
+Once the data has been cleaned, machine learning models can be run on some of the catergorical data and numerical data. 
 
+Our finalized columns include fire_size, fire_size_class, latitude, longitude, fire_year, discovery_doy, cont_doy, stat_cause_code, stat_cause_descr, county_code, county_name, discovery_date, containment_date, duration.
+
+The numerical columns relevant for the machine learning to be used will be fire_size, fire_year (count unique), county_name (count unique), and duration. The catergorical columns relevant for ML are fire_class and stat_cause_describe.
+
+1. Import the following: 
+
+    • import numpy as np
+    • import seaborn as sns
+    • import matplotlib.pyplot as plt
+    • %matplotlib inline 
+    • sklearn.model_selection import train_test_split
+    • sklearn.metrics import accuracy_score, classification_report
+    • sklearn.ensemble import RandomForestRegressor
+
+2. Use the describe functiion to get stats for numerical columns.
+
+3. View each column as a line graph to look for any apparent trends in the data.
+
+4. Drop columns that are irrelevant.
+
+5. Bin catergorical data: fire_class and stat_cause_describe.
+
+6. Figure out target variable. This will be done for each of our target variables, so this method will be repeated for each of the following: 
+
+    • fire_size by year
+    • fire_class by year
+    • fire_duration (count unqiue) in days by year 
+    • stat_cause_describe by year
+    • county_code by year
+    • start_date (earliest in season) by year
+    • containment_date (lastest in season) by year
+
+For each model, separate out the target variable.
+
+7. Train and test the data sets using train_test_split. 
+8. Use the RandomForestRegressor model to test the data.
+9. Fit the model.
+10. Check for accuracy.
+
+Notes for next week: Because the data only goes through 2017, we can use the models to make predictions into the future and test it's accuracy using more recent data. The goal is to project these data into future years to get an understanding of fire behavior in Oregon and what we might expect in the upcoming years. One thought was to include air quality data, which affects us across the state, and may help determine areas of refuge for people during the fire season. I will look to see if we have any data for that as well. 
 
 ## Mockup Database
 Our database will likely contain the following:
