@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # Oregon Fire Analysis and Prediction (1993-2017)
 ## Backround
 As data analysts we want to use our skills to help our local and global communities, so for this project we wanted to explore an issue regarding climate-change. As Oregonians the issue of wildfires is of recurring relevance to our lives. After decades of ever-more frequent wildfires Oregon saw its worst fire season in 2021. With average temperatures continuing to rise locally and around the globe, the situation shows no signs of slowing. We discovered a great dataset with which to explore this topic. This data is from Kaggle and includes an SQLite file and various CSV files containing data about 1.88 million US wildfires over 25 years.
+=======
+# Oregon Fire Analysis and Prediction (1992-2015)
+## Backround
+As data analysts we want to use our skills to help our local and global communities, so for this project we wanted to explore an issue regarding climate-change. As Oregonians the issue of wildfires is of recurring relevance to our lives. After decades of ever-more frequent wildfires Oregon saw its worst fire season in 2021. With average temperatures continuing to rise locally and around the globe, the situation shows no signs of slowing. We discovered a great dataset with which to explore this topic. This data is from Kaggle and includes an SQLite file and various CSV files containing data about 1.88 million US wildfires over 23 years.
+>>>>>>> main
 
 Questions we hope to answer in the coming weeks:
 
@@ -83,8 +89,22 @@ For each model, separate out the target variable.
 
 Notes for next week: Because the data only goes through 2017, we can use the models to make predictions into the future and test it's accuracy using more recent data. The goal is to project these data into future years to get an understanding of fire behavior in Oregon and what we might expect in the upcoming years. One thought was to include air quality data, which affects us across the state, and may help determine areas of refuge for people during the fire season. I will look to see if we have any data for that as well. 
 
+<<<<<<< HEAD
 ## Mockup Database
 Our database will likely contain the following:
+=======
+## Database
+We will be using postgresql running in AWS RDS.
+
+Here is the ERD containing the graphical representation of table relationships:
+
+![ERD](/Resources/ERD.png)
+
+We are exploring also using air quality data.  If chosen, additional tables will be created and added to the database.
+
+## Presentation
+Our presentation will likely contain the following:
+>>>>>>> main
 
 • Plot of fire frequency
 
@@ -100,4 +120,8 @@ Our database will likely contain the following:
 
 Team: Alex Dallman, Jovan Humphrey, Nina Q
 
+<<<<<<< HEAD
 Source: https://www.kaggle.com/datasets/rtatman/188-million-us-wildfires
+=======
+Source: https://www.kaggle.com/datasets/rtatman/188-million-us-wildfires
+>>>>>>> main
