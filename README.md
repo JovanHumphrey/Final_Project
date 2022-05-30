@@ -106,6 +106,8 @@ Our presentation will likely contain the following:
 
 • The results of our machine learning tests
 
+Link to presentation url: [Google Slides](https://docs.google.com/presentation/d/1HnTpr4Q7CoKs2C2mUdPNOzatUi6lzNOUqUnBa2203Vg/edit#slide=id.g11cc23ada21_0_0)
+
 Team: Alex Dallman, Jovan Humphrey, Nina Q
 
 Sources: https://www.kaggle.com/datasets/rtatman/188-million-us-wildfires
