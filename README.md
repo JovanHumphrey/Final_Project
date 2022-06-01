@@ -40,48 +40,73 @@ After importing libraries and the SQLite file into Jupyter Notebook, and creatin
 
 ## Machine Learning
 
-Once the data has been cleaned, machine learning models can be run on some of the catergorical data and numerical data. 
+Once the data has been cleaned, machine learning models can be run on some of the numerical data. 
 
-Our finalized columns include fire_size, fire_size_class, latitude, longitude, fire_year, discovery_doy, cont_doy, stat_cause_code, stat_cause_descr, county_code, county_name, discovery_date, containment_date, duration.
+Fires dataframe was merged with precipitation and temperature dataframes grouped by year and county. Final dataframe for ML included county code, year, average fire size, average discovery month, average containment month, average fire duration, average precipitation, and average temperature (832 rows × 6 columns).
 
-The numerical columns relevant for the machine learning to be used will be fire_size, fire_year (count unique), county_name (count unique), and duration. The catergorical columns relevant for ML are fire_class and stat_cause_describe.
+Simple multiple linear regression and various tuned random forest regression models were tested. Also attempted was a time series VAR model, but it did not pass the Granger’s Causality Test. 
 
-1. Import the following: 
+![final-db-ml](https://user-images.githubusercontent.com/10467547/171321862-92e6a640-5aff-478d-8819-8059a471898e.png)
 
-    • import numpy as np
-    • import seaborn as sns
-    • import matplotlib.pyplot as plt
-    • %matplotlib inline 
-    • sklearn.model_selection import train_test_split
-    • sklearn.metrics import accuracy_score, classification_report
-    • sklearn.ensemble import RandomForestRegressor
+### Multilinear Regression
 
-2. Use the describe functiion to get stats for numerical columns.
+Method:
+1. Split into train and test sets. 
+2. Run .LinearRegression()
+3. Fit and test the model. 
 
-3. View each column as a line graph to look for any apparent trends in the data.
+Accuracy:
+r2 =  -0.235
 
-4. Drop columns that are irrelevant.
+Conclusion: Not a good model. R2 score is negative, which is not good. 
 
-5. Bin catergorical data: fire_class and stat_cause_describe.
+### Random Forest Regression
 
-6. Figure out target variable. This will be done for each of our target variables, so this method will be repeated for each of the following: 
+Method: 
+1. Split into train and test sets.
+2. Scale the data (because we have very large values)
+3. Run .RandomForestRegressor()
+4. Fit and test the model.
+5. Tune with GridSearchCV. {'criterion': 'mse',  'max_depth': 7,  'max_features': 'sqrt', 'n_estimators': 500}
+6. Tune multiple times with RandomizedSearchCV. Final parameters: {'n_estimators': 415,  'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'max_depth': None}
 
-    • fire_size by year
-    • fire_class by year
-    • fire_duration (count unqiue) in days by year 
-    • stat_cause_describe by year
-    • county_code by year
-    • start_date (earliest in season) by year
-    • containment_date (lastest in season) by year
+Accuracy:
+No tuning: 21.86%, r2 = 0.193
+GridSearchCV: 38.6%, r2 = 0.215
+RandomSearchCV:  47.41 %, r2 = 0.258
 
-For each model, separate out the target variable.
+Conclusion: Not a good model. Accuracy and r2 scores are too low. 
 
-7. Train and test the data sets using train_test_split. 
-8. Use the RandomForestRegressor model to test the data.
-9. Fit the model.
-10. Check for accuracy.
+### VAR Time Series
 
-Notes for next week: Because the data only goes through 2017, we can use the models to make predictions into the future and test it's accuracy using more recent data. The goal is to project these data into future years to get an understanding of fire behavior in Oregon and what we might expect in the upcoming years. One thought was to include air quality data, which affects us across the state, and may help determine areas of refuge for people during the fire season. I will look to see if we have any data for that as well. 
+Method: 
+1. Test causation using Granger’s causality test
+2. Perform cointegration test
+3. Split the series into training and testing data
+4. Check for stationarity and make the time series stationary
+5. Select the order (p) of VAR model
+6. Train the VAR model of selected order (p)
+7. Check for serial correlation of residuals (errors) using Durbin Watson statistic
+8. Train the VAR model of selected order (p)
+9. Invert the transformation to get the real forecast
+10. Plot of forecast vs actuals
+11. Evaluate the forecast
+
+Accuracy:
+Did not pass the Granger’s causality test.
+
+Conclusion: Could not use this model because it did not pass the Granger's causality test. 
+
+### Lessons and Future Improvements
+
+To improve the random forest regression analysis, we should have encoded (dummy or simple) for the year and the county code to improve accuracy. Even so, these were not the best models and data to use.
+What we were really after was a forecasting model that would help us predict fire outcomes into the future using a form of time series analysis, and the best data to use is geographic data (MODIS) paired with weather and vegetation data, using Google Earth Engine. MODIS data includes a product, Global Daily Fire Location Product, that would be best for this analysis. We thought VAR would be the best model to use in this instance, but actually the Autoregressive Integrated Moving Average model (ARIMA) would be best, which finds the best autoregression (AR) model and the moving average (MA) of weighted linear combination to obtain the prediction method. Global Fire Season Severity Analysis and Forecasting by  Ferreira et al. (2019) outlined their methods for accomplishing a fire prediction model, and future model building for Oregon could also use similar methods, including ARIMA. 
+
+A future project could include a categorical analysis using neural networks that could predict final fire class size (A,B,C,D,E,F,or G) based on current parameters you entered, including current temperature, humidity, county, month of the year, acres burned already, and duration so far. MODIS data could also be incorporated. Unfortunately, we did not have the time to complete this model. 
+
+
+
+
 
 ## Database
 We will be using postgresql running in AWS RDS.
