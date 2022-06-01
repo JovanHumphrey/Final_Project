@@ -79,6 +79,7 @@ RandomSearchCV:  47.41 %, r2 = 0.258
 
 ![plots-compare-ml](https://user-images.githubusercontent.com/10467547/171323141-57c1032a-6d89-4d44-88fc-673d36fe3e95.png)
 
+
 Conclusion: Not a good model. Accuracy and r2 scores are too low. 
 
 ### VAR Time Series
