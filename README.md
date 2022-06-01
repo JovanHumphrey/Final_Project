@@ -48,6 +48,8 @@ Simple multiple linear regression and various tuned random forest regression mod
 
 ![final-db-ml](https://user-images.githubusercontent.com/10467547/171321862-92e6a640-5aff-478d-8819-8059a471898e.png)
 
+![param-ml](https://user-images.githubusercontent.com/10467547/171323115-06e06a2d-89b7-4dec-a914-ddd0873e6c96.png)
+
 ### Multilinear Regression
 
 Method:
@@ -74,6 +76,8 @@ Accuracy:
 No tuning: 21.86%, r2 = 0.193
 GridSearchCV: 38.6%, r2 = 0.215
 RandomSearchCV:  47.41 %, r2 = 0.258
+
+![plots-compare-ml](https://user-images.githubusercontent.com/10467547/171323141-57c1032a-6d89-4d44-88fc-673d36fe3e95.png)
 
 Conclusion: Not a good model. Accuracy and r2 scores are too low. 
 
