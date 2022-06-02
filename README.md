@@ -143,5 +143,5 @@ Link to Heroku app: [https://oregonfires.herokuapp.com/](https://oregonfires.her
 Team: Alex Dallman, Jovan Humphrey, Nina Q
 
 Sources: https://www.kaggle.com/datasets/rtatman/188-million-us-wildfires
-         https://www.ncdc.noaa.gov/cag/county/mapping/35/pcp/200506/1/value
+         https://www.ncdc.noaa.gov/cag/county/mapping/35/pcp/200506/1/value.  
          https://data.oregon.gov/Natural-Resources/Oregon-counties-map/djry-8qn8
